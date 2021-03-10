@@ -1,5 +1,5 @@
 import tweepy
-import json
+import simplejson as json
 import csv
 
 
@@ -95,13 +95,3 @@ class TwitterParse:
     def drive(self, searchDoc, archive):
         searchStrings = self.getSearchString(searchDoc)
         self.gatherData(searchStrings, archive)
-
-
-# Dictionary for holding sensitive information
-twitterKeys = None
-
-read = open("sensitive.json", "r")
-twitterKeys = json.load(read)
-
-test = TwitterParse(twitterKeys["consumer_key"], twitterKeys["consumer_secret"], twitterKeys["ACCESS_TOKEN"], twitterKeys["ACCESS_TOKEN_SECRET"])
-test.drive("strings.txt", "P0Archive.csv")
